@@ -1,0 +1,334 @@
+{% extends "layout.jinja2.html" %}
+
+{% block pagestyles %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .sett{
+
+    margin-left:30%;
+    margin-right:33%;
+  }
+
+.form{
+  margin:auto;
+  max-width:auto;
+  border: 1px solid #eee;
+  border-radius:12px;
+ /* background:url(../static/dist/img/banner4.jpg) no-repeat 0px 0px !important;*/
+  background-size: cover;
+  padding-left:26px;
+  padding-right:26px;
+  position: relative;
+  z-index: 0;
+  margin-top:0px;
+}
+.form::before {
+  content: "";
+  background: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 0;
+  min-height: 100%;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  border-radius:17px;
+}
+.text{
+  padding:5px;
+}
+.style{
+  color:green;
+}
+table {
+
+  width: 100%;
+}
+td {
+  border-bottom:2px solid blue;
+  padding: 8px;
+  background-color: #f2f2f2;
+}
+
+</style>
+
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        .bcontent {2
+            margin-top: 10px;
+        }
+    </style>
+
+<div class="container">
+    <h1 align="center"
+    style="">Search for Events</h1>
+    <div class="alert-container">
+     <center>{{ status }}</center><br /><hr /><br />
+     <div class="error">
+
+     </div>
+    </div>
+	<div class="row justify-content-center">
+      <!-- left column -->
+
+      <!-- edit form column -->
+      <div class="col-md-12 personal-info"
+      style="background-color:#e8eaed"
+
+
+      >
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a>
+          <i class="fa fa-coffee"></i>
+        </div>
+      <div align="right">
+      </div>
+        <div class="text-dark form">
+        <h3 align="center">Search</h3>
+        <div class="sett">
+        <form class="form-horizontal" method="POST" action="/search_event"
+        style="padding-left:30px;">
+          {{ form.csrf_token }}
+
+
+          <div class="form-group">
+            <label class="col-lg-12 control-label text">Type of Produce</label>
+            <div class="col-lg-12">
+              <fieldset class="search form-control">
+              {{ form.search }}
+              {% if form.search.errors %}
+                <ul class="errors">
+                  {% for error in form.search.errors %}
+                    <li>{{ error }}</li>{% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-3 control-label text">Zipcode</label>
+            <div class="col-lg-12">
+              <fieldset class="zipCode form-control">
+              {{ form.zipCode }}
+              {% if form.zipCode.errors %}
+                <ul class="errors">
+                  {% for error in form.zipCode.errors %}
+                    <li>{{ error }}</li>{% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-12 control-label">state</label>
+            <div class="col-lg-12">
+              <fieldset class="state form-control">
+              {{ form.state}}
+              {% if form.state.errors %}
+                <ul class="errors">
+                  {% for error in form.state.errors %}
+                    <li>{{ error }}</li>{% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="col-lg-8 control-label">Search Radius</label>
+            <div class="col-lg-12">
+              <fieldset class="select form-control">
+                {{ form.select }}
+                {% if form.select.errors %}
+                  <ul class="errors">
+                    {% for error in form.select.errors %}
+                      <li>{{ error }}</li>{% endfor %}
+                  </ul>
+                {% endif %}
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="submit" align='center'>
+            {{ form.hidden_tag() }}
+            <button type="submit" name='submit' class="btn btn-primary">Find event</button>
+        </div>
+
+                  </form></div>
+
+
+        <br>
+            {% for result in results %}
+
+              <div class="card mb-3" style="max-width: 3000px; max-height: 500px">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{{ url_for('static', filename='Uploads/color_changing.jpg') }}" class="card-img" alt="" height="">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align:center;">Card title</h5>
+                  <div class="float-child green">
+        <div class="card-block px-12">
+          <h4 class="card-title" style="text-align:center;">Info</h4>
+          <p class="card-text"></p>
+
+          <!-- <p style="font-size:23px;"><span class="style">Farm Name:</span>        {{ result.farmName }}</p>
+          <p style="font-size:23px;"><span class="style">Type of Produce: </span>{{ result.farmType }}</p>
+          <p style="font-size:23px;"><span class="style">Date:</span>{{ result.date }}</p>
+          <p style="font-size:23px;"><span class="style">Timing:</span> {{ result.time }}</p>
+          </div> -->
+          <table>
+            <tr>
+              <td>Farm Name</td>
+              <td style="text-align:right">{{result.farmName}}</td>
+            </tr>
+          </table>
+
+          <table>
+            <tr>
+              <td>Produce Type</td>
+              <td style="text-align:right">{{result.farmType}}</td>
+            </tr>
+          </table>
+
+          <table>
+            <tr>
+              <td>Date</td>
+              <td style="text-align:right">{{result.date}}</td>
+            </tr>
+          </table>
+
+
+          <table>
+            <tr>
+              <td>Timing</td>
+              <td style="text-align:right">{{result.time}}</td>
+            </tr>
+          </table>
+
+        </div>
+
+      <div class="">
+         <!--  <p class="card-text"></p>
+          <p style="font-size:23px;"><span class="style">Address: </span>{{ result.address }}</p>
+          <p style="font-size:23px;"><span class="style"> Cap:</span> {{ result.cap }}</p>
+          <p style="font-size:23px;"><span class="style">Signed Up:</span> {{ result.signedUp }}</p>
+          <p style="font-size:23px;"> <span class="style">Price Per Pound:  </span>{{ result.pricePerPound }}</p>
+           -->
+
+
+          <table>
+            <tr>
+              <td>Address</td>
+              <td style="text-align:right">{{result.address}}</td>
+            </tr>
+          </table>
+
+
+          <table>
+            <tr>
+              <td>Cap</td>
+              <td style="text-align:right">{{result.cap}}</td>
+            </tr>
+          </table>
+
+          <table>
+            <tr>
+              <td>SignedUp</td>
+              <td style="text-align:right">{{result.signedUp}}</td>
+            </tr>
+          </table>
+
+
+          <table>
+            <tr>
+              <td>PricePerPound</td>
+              <td style="text-align:right">{{result.pricePerPound}}</td>
+            </tr>
+          </table>
+
+
+
+
+
+
+          <br>
+          <a href="{{ url_for('main_bp.cover') }}" class="mt-auto btn btn-primary ">Sign Up</a>
+      </div>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        {% endfor %}
+
+
+  </div>
+  <!-- End of card -->
+
+</div>
+   </br>
+      </div>
+  </div>
+</div>
+</div>
+
+
+
+{% endblock %}
+
+             <!--<div class="container py-3">-->
+  <!--<div class="title h1 text-center">Horizontal cards - Bootstrap 4</div>-->
+  <!--&lt;!&ndash; Card Start &ndash;&gt;-->
+  <!--<div class="card">-->
+
+    <!--<div class="float-child green">-->
+        <!--<div class="card-block px-6">-->
+          <!--<h4 class="card-title">Horizontal Card with Carousel - Bootstrap 4 </h4>-->
+          <!--<p class="card-text"></p>-->
+          <!--<p>Farm Name: {{ result.farmName }}</p>-->
+          <!--<p>Type of Produce: {{ result.farmType }}</p>-->
+          <!--<p>Date: {{ result.date }}</p>-->
+          <!--<p>Timing: {{ result.time }}</p>-->
+          <!--</div>-->
+        <!--</div>-->
+
+      <!--<div class="float-child blue">-->
+          <!--<p class="card-text"></p>-->
+          <!--<p>Address: {{ result.address }}</p>-->
+          <!--<p>Cap: {{ result.cap }}</p>-->
+          <!--<p>Signed Up: {{ result.signedUp }}</p>-->
+          <!--<p> Price Per Pound:  {{ result.pricePerPound }}</p>-->
+          <!--<br>-->
+          <!--<a href="#" class="mt-auto btn btn-primary ">Read More</a>-->
+      <!--</div>-->
+    <!--<div class="col-md-5">-->
+        <!--<div id="CarouselTest" class="carousel slide" data-ride="carousel">-->
+          <!--<ol class="carousel-indicators">-->
+            <!--<li data-target="#CarouselTest" data-slide-to="0" class="active"></li>-->
+
+          <!--</ol>-->
+          <!--<div class="carousel-inner">-->
+            <!--<div class="carousel-item active">-->
+              <!--<img class="d-block" src="https://picsum.photos/450/300?image=1072" alt="">-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+       <!--</div>-->
+      <!-- Carousel start -->
+      <!-- End of carousel -->

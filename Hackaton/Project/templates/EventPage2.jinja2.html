@@ -1,0 +1,192 @@
+{% extends "header.html" %}
+
+{% block pagestyles %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link href="{{ url_for('static', filename='dist/css/account.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .setting{
+    padding:auto;
+    margin-left:20%;
+    margin-right:20%;
+    background-color:#c4c2c2;
+  }
+</style>
+
+<div class="setting">
+    <h1>Create Event</h1>
+    <hr>
+  <div class="">
+      <!-- left column -->
+
+      <form class="setting" method="POST" action="/create_event" enctype="multipart/form-data">
+
+      <div class="form-group">
+        <div class="text-center">
+          <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+          <h6>Upload a different photo...</h6>
+        </div>
+        <fieldset class="file">
+          {{ form.uploadimage }}
+        </fieldset>
+
+      </div>
+
+      <!-- edit form column -->
+      <div class=" personal-info">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a>
+          <i class="fa fa-coffee"></i>
+        </div>
+        <h3>Personal info</h3>
+
+          {{ form.csrf_token }}
+
+
+
+          <div class="form-group">
+            <label class="col-lg-15 control-label">Event Date</label>
+            <div class="col-lg-15">
+              <fieldset class="date form-control">
+                {{ form.date.label }}
+                {{ form.date }}
+                {% if form.date.errors %}
+                <ul class="errors">
+                  {% for error in form.date.errors %}
+                  <li>{{ error }}</li>{% endfor %}
+                </ul>
+                {% endif %}
+              </fieldset>
+            </div>
+          </div>
+        <!--           <label for='date' class='label-control'>Event Date</label>
+          <input type="" name="date" placeholder="Enter Event date" 
+          value="" class='form-control'> -->
+           
+<!-- 
+           <label for='time' class='label-control'>Time</label>
+           <input type="time" name="time" placeholder="Enter time" class='form-control'> -->
+          <div class="form-group">
+            <label class="col-lg-15 control-label ">Timing <br>Please enter the time of event</label>
+            <div class="col-lg-15">
+              <fieldset class="time form-control">
+              {{ form.time }}
+              {% if form.time.errors %}
+                <ul class="errors">
+                  {% for error in form.time.errors %}
+                    <li>{{ error }}</li>{% endfor %}
+                </ul>
+              {% endif %}
+            </fieldset>
+            </div>
+          </div>
+
+            <div class="form-group">
+            <label class="col-lg-15 control-label">Time Zone:</label>
+            <div class="col-lg-15">
+              <div class="ui-select">
+                <select id="user_time_zone" class="form-control">
+                  <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                  <option value="Alaska">(GMT-09:00) Alaska</option>
+                  <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                  <option value="Arizona">(GMT-07:00) Arizona</option>
+                  <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                  <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                  <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                  <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+<!-- 
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Max Number of People:</label>
+            <div class="col-lg-8">
+                <fieldset class="cap">
+                {{ form.cap.label }}
+                
+                {{ form.cap }}
+                <br><br>
+                {% if form.cap.errors %}
+                  <ul class="errors">
+                    {% for error in form.cap.errors %}
+                      <li>{{ error }}</li>{% endfor %}
+                  </ul>
+                {% endif %}
+              </fieldset>
+            </div>
+          </div> -->
+           
+         <label for="cap">Max Number of People</label>
+         <input type="number" name="cap" placeholder="Please Choose the max Number of People at your event" class="form-control">
+<!-- 
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Signed Up</label>
+            <div class="col-lg-8">
+              <fieldset class="email">
+                {{ form.signedUp.label }}
+                {{ form.signedUp }}
+                {% if form.signedUp.errors %}
+                  <ul class="errors">
+                    {% for error in form.signedUp.errors %}
+                      <li>{{ error }}</li>{% endfor %}
+                  </ul>
+                {% endif %}
+              </fieldset>
+            </div>
+          </div> -->
+
+          <!--<label for="signedUp">signedUp</label>-->
+          <!--<input type="number" name='signedUp' placeholder="Everytime you recieve an event signup email, update this count" class="form-control">-->
+
+
+
+          <label for="Price Per Box">Enter The Price Per Box</label>
+          <input type="hidden" name="pricePerPound">
+          <input type="number" name="pricePerPound" placeholder="Please Enter The Price Per Box" class="form-control">
+          <!-- 
+            <div class="form-group">
+            <label class="col-lg-3 control-label">Pricing</label>
+            <div class="col-lg-8">
+              <fieldset class="email">
+                {{ form.hidden_tag()}}
+                {{ form.pricePerPound.label }}
+                {{ form.pricePerPound }}
+                <br>
+                {% if form.pricePerPound.errors %}
+                  <ul class="errors">
+                    {% for error in form.pricePerPound.errors %}
+                      <li>{{ error }}</li>{% endfor %}
+                  </ul>
+                {% endif %}
+              </fieldset>
+            </div>
+          </div> -->
+           <br>
+
+          <div >
+            {{ form.hidden_tag() }}
+            <span class="btn btn-primary">{{ form.submit }}</span>
+        </div>
+           <!--  <br>
+          <input type="hidden" name="submit">
+          <button type="submit" name="submit" value="" class="btn btn-primary">
+           Create Event
+          </form> -->
+          <!-- <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input type="button" class="btn btn-primary" value="Save Changes">
+              <span></span>
+              <input type="reset" class="btn btn-default" value="Cancel">
+            </div>
+          </div> -->
+      </div>
+  </div>
+</div>
+<hr>
+
+{% endblock %}

@@ -1,0 +1,197 @@
+<html lang="en">
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>{{ title }}</title>
+  <meta name="description" content="Add user authentication to your Flask app."/>
+  <meta name="HandheldFriendly" content="True"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#5eb9d7"/>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='dist/img/favicon.png') }}" type="image/x-icon"/>
+  <meta property="og:site_name" content="Hackers and Slackers"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Hackers and Slackers - Hackers and Slackers"/>
+  <meta property="og:description" content="Add user authentication to your Flask app."/>
+  <meta property="og:url" content="https://flasklogin.hackersandslackers.app/"/>
+  <meta name="twitter:title" content="{{ title }}"/>
+  <meta name="twitter:description" content="Add user authentication to your Flask app."/>
+  <meta name="twitter:url" content="https://flasklogin.hackersandslackers.app/"/>
+  <meta name="twitter:site" content="@hackersslackers"/>
+  <meta name="twitter:creator" content="@toddrbirchard"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image"
+        content=" https://storage.googleapis.com/hackersandslackers-cdn/2019/06/flasklogin@2x.jpg"/>
+  <meta property="og:image" content=" https://storage.googleapis.com/hackersandslackers-cdn/2019/06/flasklogin@2x.jpg"/>
+  <meta property="og:image:width" content="1000"/>
+  <meta property="og:image:height" content="523"/>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,500" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+  <link rel="shortcut icon" href={{url_for('static',filename="dist/img/favicon.png")}} type="image/x-icon">
+  <link rel="stylesheet" href={{url_for('static',filename="dist/css/style-freedom.css")}}>
+<div id="_bsa_srv-CKYI627U_0"></div><div id="_bsa_srv-CKYI653J_1"></div>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link href="{{ url_for('static', filename='dist/css/account.css') }}" rel="stylesheet" type="text/css">
+
+ 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+   <link href={{url_for('static',filename="dist/css/cover.css")}} rel="stylesheet">
+
+  <!-- {% block pagestyles %}{% endblock %} -->
+</head>
+
+<body class="{{ template }}">
+
+<script type="text/javascript" async="" src={{url_for('static',filename="dist/css/analytics.js.download")}}>
+</script><script src={{url_for('static',filename="dist/css/jquery.min.js.download")}}></script>
+<script src={{url_for('static',filename="dist/css/monetization.js.download")}} type="text/javascript"></script>
+<script>
+(function(){
+  if(typeof _bsa !== 'undefined' && _bsa) {
+      // format, zoneKey, segment:value, options
+      _bsa.init('flexbar', 'CKYI627U', 'placement:w3layoutscom');
+    }
+})();
+</script>
+<script>
+(function(){
+if(typeof _bsa !== 'undefined' && _bsa) {
+  // format, zoneKey, segment:value, options
+  _bsa.init('fancybar', 'CKYDL2JN', 'placement:demo');
+}
+})();
+</script>
+<script>
+(function(){
+  if(typeof _bsa !== 'undefined' && _bsa) {
+      // format, zoneKey, segment:value, options
+      _bsa.init('stickybox', 'CKYI653J', 'placement:w3layoutscom');
+    }
+})();
+</script>
+<!--<script>(function(v,d,o,ai){ai=d.createElement("script");ai.defer=true;ai.async=true;ai.src=v.location.protocol+o;d.head.appendChild(ai);})(window, document, "//a.vdo.ai/core/w3layouts_V2/vdo.ai.js?vdo=34");</script>-->
+<div id="codefund"><!-- fallback content --></div>
+<script src={{url_for('static',filename="dist/css/funder.js.download")}} async="async"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src={{url_for('static',filename="dist/css/js")}}></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149859901-1');
+</script>
+
+<script>
+     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+     ga('create', 'UA-149859901-1', 'demo.w3layouts.com');
+     ga('require', 'eventTracker');
+     ga('require', 'outboundLinkTracker');
+     ga('require', 'urlChangeTracker');
+     ga('send', 'pageview');
+   </script>
+<script async="" src={{url_for('static',filename="dist/css/autotrack.js.download")}}></script>
+
+
+
+
+<div class="container">
+  <!-- Gallery4 block -->
+<section class="w3l-banner-slider">
+        <header id="headers4-block">
+                <div class="wrapper">
+                        <div class="d-grid nav-mobile-block header-align">
+                                <div class="logo">
+                                    <span class="hny-logo">
+
+ 
+                                      <a class="brand-logo" href="#"></a>
+                                    </span>
+                                    <a class="brand-logo" href="">
+                                        <img src={{url_for('static',filename=
+                                        "dist/img/logo.png")}} alt="" title="" style="height:35px;width:35px;" />
+                                    </a>
+                                </div>
+                                <input type="checkbox" id="nav">
+                                <label class="nav" for="nav"></label>
+                                <nav>
+                                        <label for="drop" class="toggle nav-height">Navigation<span class="fa fa-bars" aria-hidden="true"></span></label>
+                                    <input type="checkbox" id="drop">
+                                    <ul class="menu">
+                                        <li><a href={{url_for("main_bp.cover")}} class="active">Home</a></li>
+                                        <li><a href="#">About</a></li>
+                                        
+                                            
+                                        
+                                        <li>
+                                            <!-- First Tier Drop Down -->
+                                            <label for="drop-9" class="toggle toogle-9">Events <span class="angle-dropdown" aria-hidden="true"></span>
+                                            </label>
+                                            <a href="#">Events<span class="angle-dropdown" aria-hidden="true"></span></a>
+                                            <input type="checkbox" id="drop-9">
+                
+                                            <ul>
+                                               
+                                                    <li><a href="/main_dashboard" class="drop-text">Create Events</a></li>
+
+                                                    <li><a href="/search_event" 
+                                                    class="drop-text">
+                                                     Search Events
+                                                     </a></li>
+                                              
+                                            </ul>
+                                        </li>
+                                        
+                                        <li>
+                                            <!-- First Tier Drop Down -->
+                                            <label for="drop-8" class="toggle toogle-8">Account <span class="angle-dropdown" aria-hidden="true"></span>
+                                            </label>
+                                            <a href="#">Account <span class="angle-dropdown" aria-hidden="true"></span></a>
+                                            <input type="checkbox" id="drop-8">
+                
+                                            <ul>
+                                                    <li><a href="/c_login" class="drop-text">Sign In</a></li>
+                                                    <li><a href="/c_signup" class="drop-text">Sign Up</a></li>
+                                                   
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Contact Us</a></li>
+
+                                        <li>
+                                          
+                                        <a href="/logout" class="">
+                                          <span class="glyphicon glyphicon-log-out"></span> Log out
+                                        </a>
+                                        </li>
+
+                                    </ul>
+                                </nav>
+        
+                            </div>
+                    <div class="d-grid nav-mobile-block header-align">
+                    </div>
+                </div>
+            </header>
+
+</section>
+  {% block content %}
+
+
+
+  {% endblock %}
+</div>
+<script src="{{ url_for('static', filename='dist/js/main.min.js') }}"></script>
+{% block additionalscripts %}{% endblock %}
+{% include 'analytics.jinja2.html' %}
+</body>
+
+</html>

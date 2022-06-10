@@ -1,0 +1,199 @@
+{% extends "layout.jinja2.html" %}
+<!-- 
+{% block pagestyles %}
+  <link href="{{ url_for('static', filename='dist/css/account.css') }}" rel="stylesheet" type="text/css">
+{% endblock %} -->
+
+
+{% block content %}
+  <!-- <div class="form-wrapper">
+
+    <div class="logo">
+      <img src="{{ url_for('static', filename='dist/img/logo.png') }}" alt="logo"/>
+    </div>
+
+    {% for message in get_flashed_messages() %}
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+      </div>
+    {% endfor %}
+
+    <h1>Log In As A Farmer</h1>
+
+    <form method="POST" action="/login">
+      {{ form.csrf_token }}
+
+      <fieldset class="email">
+        {{ form.email.label }}
+        {{ form.email(placeholder='youremail@example.com') }}
+        {% if form.email.errors %}
+          <ul class="errors">
+            {% for error in form.email.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
+
+      <fieldset class="password">
+        {{ form.password.label }}
+        {{ form.password }}
+        {% if form.email.errors %}
+          <ul class="errors">
+            {% for error in form.password.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
+
+      <div class="submit-button">
+        {{ form.submit }}
+      </div>
+
+      <div class="login-signup">
+        <span>Don't have an account? <a href="{{ url_for('auth_bp.signup') }}">Sign up.</a></span>
+      </div>
+
+    </form>
+  </div> -->
+
+
+
+<!-- <script>
+(function(){
+  if(typeof _bsa !== 'undefined' && _bsa) {
+
+      _bsa.init('flexbar', 'CKYI627U', 'placement:w3layoutscom');
+    }
+})();
+</script>
+<script>
+(function(){
+if(typeof _bsa !== 'undefined' && _bsa) {
+
+  _bsa.init('fancybar', 'CKYDL2JN', 'placement:demo');
+}
+})();
+</script>
+<script>
+(function(){
+  if(typeof _bsa !== 'undefined' && _bsa) {
+
+      _bsa.init('stickybox', 'CKYI653J', 'placement:w3layoutscom');
+    }
+})();
+</script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149859901-1');
+</script>
+
+<script>
+     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+     ga('create', 'UA-149859901-1', 'demo.w3layouts.com');
+     ga('require', 'eventTracker');
+     ga('require', 'outboundLinkTracker');
+     ga('require', 'urlChangeTracker');
+     ga('send', 'pageview');
+   </script>
+
+<section class="w3l-forms-main-61">
+  <div class="form-inner">
+    <div class="wrapper"  style="background-color:#e8eaed">
+      
+      <div class="form-61">
+        <h4 class="form-head" style="padding-top:10px;">Farmer Sign in</h4>
+
+        {% for message in get_flashed_messages() %}
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+      </div>
+       {% endfor %}
+
+        <form action="/login" method="POST">
+              {{ form.csrf_token }}
+          <div class="">
+            <p class="text-head">Username</p>
+            <input type="text" name="email" class="input">
+          </div>
+          <div class="">
+            <p class="text-head">Password</p>
+            <input type="password" name="password" class="input">
+          </div>
+          <label class="remember">
+            <input type="checkbox">
+            <span class="checkmark"></span>Remember me
+          </label>
+          <button type="submit" class="signinbutton btn">Sign in</button>
+          <p class="signup">Have not an account yet?<a href="https://demo.w3layouts.com/demosWTR/Freedom/30-05-2020/landform-freedom-demo_Free/465314369/web/signup.html" class="signuplink">Sign up</a></p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section></body></html>
+ -->
+
+<div class="form-wrapper">
+
+    <div class="logo">
+      <img src="{{ url_for('static', filename='dist/img/logo.png') }}" alt="logo"/>
+    </div>
+
+    {% for message in get_flashed_messages() %}
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+      </div>
+    {% endfor %}
+
+    <h1>Farmer sign in</h1>
+
+    <form method="POST" action="/login">
+      {{ form.csrf_token }}
+
+      <fieldset class="email">
+        {{ form.email.label }}
+        {{ form.email(placeholder='youremail@example.com') }}
+        {% if form.email.errors %}
+          <ul class="errors">
+            {% for error in form.email.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
+
+      <fieldset class="password">
+        {{ form.password.label }}
+        {{ form.password }}
+        {% if form.email.errors %}
+          <ul class="errors">
+            {% for error in form.password.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
+
+      <div class="submit-button">
+        {{ form.submit }}
+      </div>
+      <div class="login-signup">
+        <span>Forgot Password. <a href="{{ url_for('main_bp.reset') }}">Reset</a></span>
+      </div>
+      <div class="login-signup">
+        <span>Don't have a Farmer account? <a href="{{ url_for('auth_bp.signup') }}">Sign up As A Farmer.</a></span>
+      <p></p>
+        <span>Want to sign in as a customer instead? <a href="{{ url_for('auth_bp.c_login') }}">Customer Sign In.</a></span>
+
+      </div>
+
+    </form>
+  </div>
+
+
+{% endblock %}

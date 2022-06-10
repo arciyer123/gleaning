@@ -1,0 +1,124 @@
+{% extends "layout.jinja2.html" %}
+
+{% block pagestyles %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container" style="background-color:#cfcbca;">
+    <h1>Create Event</h1>
+  	<hr>
+	<div class="row">
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+          <h6>Upload a different photo...</h6>
+          <input type="file" class="form-control">
+        </div>
+      </div>
+
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a>
+          <i class="fa fa-coffee"></i>
+          This is an <strong>.alert</strong>. Use this to show important messages to the user.
+        </div>
+        <h3>Personal info</h3>
+
+        <form class="form-horizontal" method="POST" action="/create_event">
+          {{ form.csrf_token }}
+
+
+          <div>
+            <label class="col-lg-3 control-label"><b>Event Date</b></label>
+            <div class="col-lg-8">
+              <fieldset class="date">
+                {{ date }}
+              </fieldset>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-lg-3 control-label"><b>Timing</b></label>
+            <div class="col-lg-8">
+              <fieldset class="time">
+              {{ event_time }}
+            </fieldset>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="col-lg-3 control-label"><b>Max Number of People:</b></label>
+            <div class="col-lg-8">
+                <fieldset class="cap">
+                {{ event_cap }}
+              </fieldset>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-8 control-label"><b>Signed Up</b></label>
+            <div class="col-lg-8">
+              <fieldset class="email">
+                {{ form.hidden_tag() }}
+                {{ form.signedUp.label }}
+                <span style="border:1px solid black;">{{ form.signedUp }}</span>
+                {% if form.signedUp.errors %}
+                  <ul class="errors">
+                    {% for error in form.signedUp.errors %}
+                      <li>{{ error }}</li>{% endfor %}
+                  </ul>
+                {% endif %}
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-3 control-label"><b>Email</b></label>
+            <div class="col-lg-8">
+              <fieldset class="email">
+                {{ email }}
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-3 control-label"><b>Pricing</b></label>
+            <div class="col-lg-8">
+              <fieldset class="price">
+                {{ price }}
+              </fieldset>
+            </div>
+          </div>
+
+
+          <div class="submit-button col-lg-3">
+            {{ form.hidden_tag() }}
+            {{ form.submit }}
+
+        </div>
+
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <a href="/main_dashboard">
+              <input type="button" class="btn btn-primary" value="Save Changes">
+              </a>
+              <span></span>
+              <input type="reset" class="btn btn-default" value="Cancel">
+
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+<hr>
+
+{% endblock %}
